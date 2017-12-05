@@ -22,6 +22,7 @@ $(document).ready(function () {
 	$(window).on("scroll", function () {
 		var image1 = $('.imagePane').eq(0);
 		var image2 = $('.imagePane').eq(1);
+		var collage = $('.imagePane').eq(2);
 
 		if (isInView(image1)) {
 			console.log("it's scrolling")
@@ -31,6 +32,11 @@ $(document).ready(function () {
 		if (isInView(image2)) {
 			console.log("it's scrolling")
 			$('#image2').addClass('fadeIn');
+		};
+
+		if (isInView(collage)) {
+			console.log("it's scrolling")
+			$('#collage').addClass('fadeIn');
 		};
 	});
 });
@@ -90,10 +96,10 @@ function onYouTubeIframeAPIReady() {
 $('.front').on('click', function (e) {
 	e.preventDefault();
 
-	var card = $(this);
+	var card = $(this).closest(".card");
 
-	$('card, .front').removeClass('active');
-	$('card, .back').addClass('active');
+	card.find('.front').removeClass('active');
+	card.find('.back').addClass('active');
 
 });
 
