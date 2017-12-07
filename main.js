@@ -22,7 +22,8 @@ $(document).ready(function () {
 	$(window).on("scroll", function () {
 		var image1 = $('.imagePane').eq(0);
 		var image2 = $('.imagePane').eq(1);
-		var collage = $('.imagePane').eq(2);
+		var image3 = $('.imagePane').eq(2);
+
 
 		if (isInView(image1)) {
 			console.log("it's scrolling")
@@ -34,10 +35,11 @@ $(document).ready(function () {
 			$('#image2').addClass('fadeIn');
 		};
 
-		if (isInView(collage)) {
+		if (isInView(image3)) {
 			console.log("it's scrolling")
-			$('#collage').addClass('fadeIn');
+			$('#image3').addClass('fadeIn');
 		};
+
 	});
 });
 
@@ -56,6 +58,18 @@ var CUNY_YT = function (ele) {
 
 	ele.attr("id", player_id);
 
+	var onPlayerReady = function (event) {
+		ele = $("#" + player_id);
+		// event.target.playVideo();
+	};
+
+	var onPlayerStateChange = function (event) {
+		if (event.data == YT.PlayerState.PLAYING && !self.done) {
+			setTimeout(stopVideo, 6000);
+			self.done = true;
+		}
+	};
+
 	this.player = new YT.Player(player_id, {
 		height: height,
 		width: width,
@@ -68,20 +82,38 @@ var CUNY_YT = function (ele) {
 
 	this.done = false;
 
-	var onPlayerReady = function (event) {
-		event.target.playVideo();
-	};
-
-	var onPlayerStateChange = function (event) {
-		if (event.data == YT.PlayerState.PLAYING && !self.done) {
-			setTimeout(stopVideo, 6000);
-			self.done = true;
-		}
-	}
-
 	this.stop = function () {
 		self.player.stopVideo();
 	}
+
+	this.play = function () {
+		self.player.playVideo();
+	};
+
+	this.pause = function () {
+		self.player.pauseVideo();
+	};
+
+	this.mute = function () {
+		self.player.mute();
+	};
+
+	this.unMute = function () {
+		self.player.unMute();
+	};
+
+	$(window).on("scroll", function () {
+		console.log("YT scroller");
+		console.log("ele", ele);
+		if (isInView(ele)) {
+			console.log("in view!");
+			self.mute();
+			self.play();
+		} else {
+			self.pause();
+		}
+	});
+
 
 };
 
