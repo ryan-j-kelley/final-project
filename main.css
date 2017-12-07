@@ -172,5 +172,10 @@ p {
 }
 
 @media(min-width: 729px) {
+  .imagePane {
+    width: 100%;
+    height: 100vh;
+    background-size: 100%;
+  }
   /* Any adjustments for desktop and larger go here. Note these styles will be applied to anything 729px or larger -- so desktop */
 }
