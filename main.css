@@ -66,7 +66,7 @@ html, body {
 
 .cards {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 h1 {
@@ -82,9 +82,12 @@ h3 {
   width: 100%;
 }
 
-p {
-  max-width: 600px;
+.text {
+  max-width: 800px;
   margin: 0 auto;
+}
+
+p {
   line-height: 20px;
   padding: 20px;
 }
@@ -94,7 +97,7 @@ p {
   height: 50vh;
   background-size: 100%;
   background-repeat: no-repeat;
-  background-position: center center;
+  /*background-position: center center;*/
   /*margin: 40px;*/
   opacity: 0;
   transition: opacity 1.0s ease-in-out;
@@ -111,7 +114,7 @@ p {
 
 .card {
   width: 250px;
-  height: 350px;
+  height: 375px;
   background-color: #540505;
   margin: 0 auto;
   position: relative;
@@ -119,6 +122,8 @@ p {
   margin-left: 55px;
   margin-top: 40px;
   margin-bottom: 40px;
+  border: 6px solid;
+  border-color: #ffd428;
 }
 
 .rotate img {
@@ -161,7 +166,8 @@ p {
 
 .back li {
   color: #ffd428;
-  margin: 15px;
+  margin: 25px;
+  display: list-item;
 }
 
 
@@ -176,6 +182,19 @@ p {
     width: 100%;
     height: 100vh;
     background-size: 100%;
+    display: inline-block;
+    background-position: center center;
+  }
+  .imagePane img {
+    width: 100%;
+    height: 100vh;
+  }
+  .card {
+    display: inline-block;
+    float: left;
+    margin-left: 40px;
+    margin-right: 45px;
+    margin-bottom: 60px;
   }
   /* Any adjustments for desktop and larger go here. Note these styles will be applied to anything 729px or larger -- so desktop */
 }

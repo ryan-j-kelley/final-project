@@ -107,7 +107,7 @@ var CUNY_YT = function (ele) {
 		console.log("ele", ele);
 		if (isInView(ele)) {
 			console.log("in view!");
-			self.mute();
+			// self.mute();
 			self.play();
 		} else {
 			self.pause();
