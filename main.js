@@ -103,9 +103,10 @@ var CUNY_YT = function (ele) {
 	};
 
 	$(window).on("scroll", function () {
+		var doc = $('.doc');
 		console.log("YT scroller");
 		console.log("ele", ele);
-		if (isInView(ele)) {
+		if (isInView(doc)) {
 			console.log("in view!");
 			// self.mute();
 			self.play();
@@ -132,7 +133,6 @@ $('.front').on('click', function (e) {
 
 	card.find('.front').removeClass('active');
 	card.find('.back').addClass('active');
-
 });
 
 
