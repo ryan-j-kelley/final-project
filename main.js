@@ -104,10 +104,10 @@ var CUNY_YT = function (ele) {
 
 	$(window).on("scroll", function () {
 		var doc = $('.doc');
-		console.log("YT scroller");
-		console.log("ele", ele);
+		// console.log("YT scroller");
+		// console.log("ele", ele);
 		if (isInView(doc)) {
-			console.log("in view!");
+			// console.log("in view!");
 			// self.mute();
 			self.play();
 		} else {
@@ -133,6 +133,7 @@ $('.front').on('click', function (e) {
 
 	card.find('.front').removeClass('active');
 	card.find('.back').addClass('active');
+	card.find('.interview').playVideo();
 });
 
 

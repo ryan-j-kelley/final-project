@@ -178,14 +178,14 @@ p {
 }
 
 .back h3 {
-  margin: 20px;
+  margin-bottom: 5px;
+  margin-top: 10px;
   color: #ffd428;
 }
 
-.back li {
+.back p {
   color: #ffd428;
-  margin: 25px;
-  display: list-item;
+  line-height: 18px;
 }
 
 
