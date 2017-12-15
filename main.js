@@ -20,10 +20,17 @@ var isInView = function (el) {
 
 $(document).ready(function () {
 	$(window).on("scroll", function () {
+		// add more images here
 		var image1 = $('.imagePane').eq(0);
 		var image2 = $('.imagePane').eq(1);
 		var image3 = $('.imagePane').eq(2);
-
+		var image4 = $('.imagePane').eq(3);
+		var image5 = $('.imagePane').eq(4);
+		var image6 = $('.imagePane').eq(5);
+		var image7 = $('.imagePane').eq(6);
+		var image8 = $('.imagePane').eq(7);
+		var image9 = $('.imagePane').eq(8);
+		var image10 = $('.imagePane').eq(9);
 
 		if (isInView(image1)) {
 			console.log("it's scrolling")
@@ -40,8 +47,45 @@ $(document).ready(function () {
 			$('#image3').addClass('fadeIn');
 		};
 
+		if (isInView(image4)) {
+			console.log("it's scrolling")
+			$('#image4').addClass('fadeIn');
+		};
+
+		if (isInView(image5)) {
+			console.log("it's scrolling")
+			$('#image5').addClass('fadeIn');
+		};
+
+		if (isInView(image6)) {
+			console.log("it's scrolling")
+			$('#image6').addClass('fadeIn');
+		};
+
+		if (isInView(image7)) {
+			console.log("it's scrolling")
+			$('#image7').addClass('fadeIn');
+		};
+
+		if (isInView(image8)) {
+			console.log("it's scrolling")
+			$('#image8').addClass('fadeIn');
+		};
+
+		if (isInView(image9)) {
+			console.log("it's scrolling")
+			$('#image9').addClass('fadeIn');
+		};
+
+		if (isInView(image10)) {
+			console.log("it's scrolling")
+			$('#image10').addClass('fadeIn');
+		};
+
 	});
 });
+
+var players = {};
 
 var CUNY_YT = function (ele) {
 	var self = this,
@@ -82,6 +126,8 @@ var CUNY_YT = function (ele) {
 
 	this.done = false;
 
+
+
 	this.stop = function () {
 		self.player.stopVideo();
 	}
@@ -103,10 +149,9 @@ var CUNY_YT = function (ele) {
 	};
 
 	$(window).on("scroll", function () {
-		var doc = $('.doc');
 		// console.log("YT scroller");
 		// console.log("ele", ele);
-		if (isInView(doc)) {
+		if (isInView(ele) && ele.hasClass("autoplay")) {
 			// console.log("in view!");
 			// self.mute();
 			self.play();
@@ -115,25 +160,33 @@ var CUNY_YT = function (ele) {
 		}
 	});
 
-
 };
+
+
+// make these global
 
 var videos = [];
 
 function onYouTubeIframeAPIReady() {
 	$(".youtube").each(function () {
-		videos.push(new CUNY_YT($(this)));
+		var id = $(this).data("id");
+
+		players[id] = new CUNY_YT($(this));
 	});
-}
+};
 
 $('.front').on('click', function (e) {
 	e.preventDefault();
 
-	var card = $(this).closest(".card");
+	var card = $(this).closest(".card"),
+		video_id = card.find("[data-id]").data("id");
 
 	card.find('.front').removeClass('active');
 	card.find('.back').addClass('active');
-	card.find('.interview').playVideo();
+
+	console.log(players[video_id]);
+	players[video_id].player.playVideo();
+	// card.find('.interview').playVideo();
 });
 
 
